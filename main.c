@@ -2,15 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_RECORDS 100
-#define MAX_NAME_LENGTH 100
+#include "./src/include/io.h"
+#include "./src/include/color.h"
 
-// Structure for a single record
-typedef struct {
-    char region_name[MAX_NAME_LENGTH];
-    float area;
-    int population;
-} Record;
+#define MAX_RECORDS 100
 
 // Function prototypes
 void createFile(const char *filename);
@@ -37,8 +32,7 @@ int main() {
 
     do {
         displayMenu();
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice = getChoice("Enter your choice: ", 1, 9);
 
         switch (choice) {
             case 1:
@@ -81,16 +75,14 @@ int main() {
 }
 
 void displayMenu() {
-    printf("\nMENU:\n");
-    printf("1. Create File\n");
-    printf("2. Read Records\n");
-    printf("3. Delete File\n");
-    printf("4. Add Record\n");
-    printf("5. Edit Record\n");
-    printf("6. Delete Record\n");
-    printf("7. Sort Records\n");
-    printf("8. Insert Sorted Record\n");
-    printf("9. Exit\n");
+    printf( BLK WHTB "                   MAIN MENU                   \n" CRESET);
+    printf("1. Create File          4. Add Record\n");
+    printf("2. Read File            5. Read Record\n");
+    printf("3. Delete File          6. Edit Record\n");
+    printf("                        7. Delete Record\n");
+    printf("                        8. Sort Records\n");
+    printf("                        9. Insert Sorted Record\n");
+    printf("                   0. Exit\n");
 }
 
 void createFile(const char *filename) {
